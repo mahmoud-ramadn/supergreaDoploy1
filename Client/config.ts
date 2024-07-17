@@ -7,12 +7,12 @@ const checkConfig = (server: string): Config | {} => {
   switch (server) {
     case "production":
       config = {
-        baseUrl: "https://supergera-deploy.vercel.app/",
+        baseUrl: "",
       };
       break;
     case "local":
       config = {
-        baseUrl: "",
+        baseUrl: "http://localhost:8000",
       };
       break;
     default:
