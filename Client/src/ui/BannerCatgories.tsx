@@ -45,22 +45,20 @@ const BannerCatgories = () => {
   }, []);
 
   return (
-    <Carousel 
+    <Carousel
       responsive={responsive}
       infinite={true}
       autoPlay={true}
       transitionDuration={1000}
-          className=" flex flex-row p-4 max-w-screen-xl mx-auto lg:p-0 relative"
-          
-          customLeftArrow={<ArrowLef />}
-          customRightArrow={<ArrowRight />}
+      className=" flex flex-row p-4 max-w-screen-xl mx-auto lg:p-0 relative"
+      customLeftArrow={<ArrowLef />}
+      customRightArrow={<ArrowRight />}
     >
       {categories.map((item: CategoryProps) => {
         return (
           <Link
             key={item._id}
             to={`category/${item?._base}`}
-            
             className="flex items-center gap-2 p-1 border border-gray-100 my-3  
                mr-1
                 hover:shadow-lg flex-1
@@ -73,7 +71,7 @@ const BannerCatgories = () => {
               className="w-10 h-10 rounded-full object-cover"
             />
 
-                <p className="text-sm  font-semibold" >{ item.name}</p>
+            <p className="text-sm  font-semibold">{item.name}</p>
           </Link>
         );
       })}

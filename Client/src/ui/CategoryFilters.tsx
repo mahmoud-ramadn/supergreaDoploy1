@@ -50,8 +50,11 @@ const CategoryFilters = ({ id }: { id: string | undefined }) => {
                                      decoration-[1px] decoration-transparent hover:decoration-gray-950
                                      hover:text-black duration-200
                                     underline-offset-2
-                                     ${item._base === id ? " text-greenText decoration-greenText"
-                        : "  text-lightText       "}`}
+                                     ${
+                                       item._base === id
+                                         ? " text-greenText decoration-greenText"
+                                         : "  text-lightText       "
+                                     }`}
               >
                 {item.name}
               </Link>

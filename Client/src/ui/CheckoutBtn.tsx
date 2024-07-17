@@ -4,8 +4,9 @@ import { store } from "../lib/store";
 import { config } from "../../config";
 
 const CheckoutBtn = ({ products }: { products: ProductsProps[] }) => {
-  const { currentUser} = store();
-  const publishableKey = "pk_test_51Pd81eJDXuvZobnnS2AfwH5bLgxyI9Jj1L1JxyPU7T3eLwxWmcGernokDLrhCbSzBYxzBQADY1JZhcSfs7Yujiy800G0rc1g8N";
+  const { currentUser } = store();
+  const publishableKey =
+    "pk_test_51Pd81eJDXuvZobnnS2AfwH5bLgxyI9Jj1L1JxyPU7T3eLwxWmcGernokDLrhCbSzBYxzBQADY1JZhcSfs7Yujiy800G0rc1g8N";
   const stripePromise = loadStripe(publishableKey);
 
   const handleCheckout = async () => {
@@ -33,15 +34,18 @@ const CheckoutBtn = ({ products }: { products: ProductsProps[] }) => {
       const checkoutSession = await response.json();
       console.log(checkoutSession);
 
-      const result: any = await stripe.redirectToCheckout({ sessionId: checkoutSession.id });
+      const result: any = await stripe.redirectToCheckout({
+        sessionId: checkoutSession.id,
+      });
       if (result.error) {
         window.alert(result.error.message);
       }
     } catch (error) {
       console.error("Error during checkout process:", error);
-      window.alert("There was an issue with the checkout process. Please try again later.");
-    } 
-  
+      window.alert(
+        "There was an issue with the checkout process. Please try again later."
+      );
+    }
   };
 
   return (

@@ -29,7 +29,7 @@ const bottomNavigation = [
 ];
 
 const Hearder = () => {
-  const { cartProduct, favoriteProduct,currentUser } = store();
+  const { cartProduct, favoriteProduct, currentUser } = store();
 
   const [searchText, setSearText] = useState("");
   const [categories, setCategories] = useState([]);
@@ -143,17 +143,18 @@ const Hearder = () => {
         )}
         <div className=" flex items-center gap-x-6 text-2xl ">
           <Link to="profile">
-            
-
-            {
-              currentUser ? (<img src={currentUser.avatar}
-                  className="w-10 h-10 rounded-full object-cover"
-                alt="profieimg" />) : (<FiUser
+            {currentUser ? (
+              <img
+                src={currentUser.avatar}
+                className="w-10 h-10 rounded-full object-cover"
+                alt="profieimg"
+              />
+            ) : (
+              <FiUser
                 className="hover:text-skyText duration-200 cursor-pointer
                     "
-              />)
-            }
-           
+              />
+            )}
           </Link>
 
           <Link to={"favorite"}>

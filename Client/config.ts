@@ -1,25 +1,17 @@
-
 interface Config {
   baseUrl: string;
 }
-const checkConfig = (server: string): Config | {} => {
-  let config: Config | {} = {};
+
+const checkConfig = (server: string): Config => {
   switch (server) {
     case "production":
-      config = {
-        baseUrl: "https://supergrea-doploy1.vercel.app",
-      };
-      break;
+      return { baseUrl: "https://supergrea-doploy1.vercel.app" };
     case "local":
-      config = {
-        baseUrl: "http://localhost:8000",
-      };
-      break;
+      return { baseUrl: "http://localhost:8000" };
     default:
-      break;
+      throw new Error(`Unknown server: ${server}`);
   }
-  return config;
 };
 
 export const selectServer = "production";
-export const config = checkConfig(selectServer) as Config;
+export const config = checkConfig(selectServer);

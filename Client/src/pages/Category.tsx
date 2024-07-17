@@ -17,16 +17,14 @@ const Category = () => {
     const fetchData = async () => {
       const endpoint = `${config.baseUrl}/categories/${id}`;
       try {
-        setLoading(true)
+        setLoading(true);
         const data = await getData(endpoint);
 
-          setProducts(data);
-          
+        setProducts(data);
       } catch (error) {
         console.error("Error fetching data", error);
       } finally {
-      setLoading(false)
-        
+        setLoading(false);
       }
     };
     fetchData();
@@ -38,39 +36,27 @@ const Category = () => {
   };
 
   return (
-    <div>{
-    
-      loading ? <Loading /> : <Container> 
-        
+    <div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Container>
+          <h2 className=" text-4xl text-center font-semibold mb-5">
+            {formatId(id!)}
+          </h2>
+          <div className=" flex  gap-10 items-start ">
+            <CategoryFilters id={id} />
 
-        <h2 className=" text-4xl text-center font-semibold mb-5">
-          {formatId(id!)}
-        </h2>
-        <div className=" flex  gap-10 items-start ">
-          <CategoryFilters id={id} />
-          
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-5">
-            {
-              products.map((item: ProductsProps) => (
-                <ProductCard item={item} key={ item._id} />
-
-              ))
-
-  }
-
-            
-
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-5">
+              {products.map((item: ProductsProps) => (
+                <ProductCard item={item} key={item._id} />
+              ))}
+            </div>
           </div>
-        </div>
-
-</Container>
-
-
-    }
-    
+        </Container>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Category
+export default Category;

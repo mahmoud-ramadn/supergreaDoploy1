@@ -7,26 +7,26 @@ import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { OrderTypes,ProductsProps} from "../types/type";
+import { OrderTypes, ProductsProps } from "../types/type";
 import { db } from "../lib/firebase";
 import { store } from "../lib/store";
 import Container from "../ui/Container";
-import FormatCurranct from "../ui/FormatCurranct";
-
+import FormatCurrency from "../ui/FormatCurranct";
 import Loading from "../ui/Loading";
 
 const Orders = () => {
   const { currentUser } = store();
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState<OrderTypes[]>([]);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
       try {
-        const docRef = doc(db, "orders", currentUser?.email!);
+        const docRef = doc(db, "orders", currentUser?.email);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          const orderData = docSnap?.data()?.orders;
+          const orderData = docSnap.data()?.orders as OrderTypes[];
           setOrders(orderData);
         } else {
           console.log("No orders yet!");
@@ -37,8 +37,12 @@ const Orders = () => {
         setLoading(false);
       }
     };
-    getData();
-  }, []);
+
+    if (currentUser?.email) {
+      getData();
+    }
+  }, [currentUser?.email]);
+
   return (
     <Container>
       {loading ? (
@@ -110,7 +114,7 @@ const Orders = () => {
                               <p className="text-gray-600">
                                 Order Amount:{" "}
                                 <span className="text-black font-medium">
-                                  <FormatCurranct  amount={totalAmt} />
+                                  <FormatCurrency amount={totalAmt} />
                                 </span>
                               </p>
                             </div>
@@ -126,7 +130,8 @@ const Orders = () => {
                                   <img
                                     src={item?.images[0]}
                                     alt="productImg"
-                                    className="h-full w-full object-cover object-center hover:scale-110 duration-300"
+                                    className=
+                                    "h-full w-full object-cover object-center hover:scale-110 duration-300"
                                   />
                                 </Link>
                                 <div className="flex flex-auto flex-col">
@@ -157,7 +162,7 @@ const Orders = () => {
                                         </dt>
                                         <dd className="ml-2 text-gray-700">
                                           <span className="text-black font-bold">
-                                            <FormatCurranct 
+                                            <FormatCurrency 
                                               amount={item?.discountedPrice}
                                             />
                                           </span>
@@ -169,11 +174,8 @@ const Orders = () => {
                                         </dt>
                                         <dd className="ml-2 text-gray-700">
                                           <span className="text-black font-bold">
-                                            <FormatCurranct 
-                                              amount={
-                                                item?.discountedPrice *
-                                                item?.quantity
-                                              }
+                                            <FormatCurrency 
+                                              amount={item?.discountedPrice * item?.quantity}
                                             />
                                           </span>
                                         </dd>
