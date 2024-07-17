@@ -1,13 +1,10 @@
 import { twMerge } from "tailwind-merge";
 
 
-interface Props{
-    amount:undefined | number ,
-    className?: string;
-}
 
-const FormatCurranct = ({ amount, className }: Props) => {
-    const newClass=twMerge("text-skyText  " ,className)
+
+const FormatCurranct = ({ amount, className }: {amount:number ,className?:string}) => {
+    const newClass=twMerge("text-skyText" ,className)
 
     const formattedAmount = new Number(amount).toLocaleString("en-US", {
         style: "currency",

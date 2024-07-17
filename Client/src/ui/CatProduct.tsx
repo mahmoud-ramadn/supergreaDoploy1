@@ -49,8 +49,8 @@ const CatProduct = ({ product }: cartProps) => {
           <p className="text-base font-semibold">
             <FormatCurranct
               className="  text-black"
-              amount={product?.discountedPrice * product?.quantity }
-            />
+              amount ={(product?.regularPrice ) as number}
+            /> 
           </p>
 
           <AddToCartBtn showPrice={false} product={product} />
@@ -68,7 +68,7 @@ const CatProduct = ({ product }: cartProps) => {
             {
               <FormatCurranct
                 className="text-green-600"
-                amount={product?.regularPrice - product?.discountedPrice}
+                amount={(product?.regularPrice as number) - (product?.discountedPrice  as number)}
               />
             }
           </span>{" "}

@@ -52,7 +52,7 @@ const BannerCatgories = () => {
       transitionDuration={1000}
       className=" flex flex-row p-4 max-w-screen-xl mx-auto lg:p-0 relative"
       customLeftArrow={<ArrowLef />}
-      customRightArrow={<ArrowRight />}
+      customRightArrow={<ArrowRight/>}
     >
       {categories.map((item: CategoryProps) => {
         return (

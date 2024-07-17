@@ -23,7 +23,7 @@ const Orders = () => {
     const getData = async () => {
       setLoading(true);
       try {
-        const docRef = doc(db, "orders", currentUser?.email);
+        const docRef = doc(db, "orders", currentUser?.email!);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const orderData = docSnap.data()?.orders as OrderTypes[];

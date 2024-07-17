@@ -31,8 +31,7 @@ const Form = () => {
       firstName,
       lastName,
       email,
-      password,
-    }: any= Object.fromEntries(formData);
+      password}:any= Object.fromEntries(formData);
 
     try {
       setLoading(true);
@@ -57,9 +56,9 @@ const Form = () => {
       
 
 
-    }catch (error: any) {
+    }catch (error:  unknown) {
   let errorMessage;
-  switch (error.code) {
+  switch (error.code  as unknown | string) {
     case "auth/invalid-email":
       errorMessage = "Please enter a valid email.";
       break;
@@ -84,7 +83,7 @@ const Form = () => {
 
 
   
-  const handleAvatar = (e: any) => {
+  const handleAvatar = (e) => {
     if (e.target.files[0]) {
       setAvatar({
         file: e.target.files[0],
@@ -98,10 +97,10 @@ const Form = () => {
     try {
       setLoading(true);
       const formData = new FormData(e.target);
-      const { email, password }: any = Object.fromEntries(formData);
+      const { email, password } = Object.fromEntries(formData);
 
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (error: any) {
+      await signInWithEmailAndPassword(auth,email, password);
+    } catch (error:any) {
       let errorMessage;
       switch (error.code) {
         case "auth/user-not-found":

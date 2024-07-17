@@ -12,7 +12,7 @@ interface ItemsProps {
     currentItems:ProductsProps[];
   }
   
-
+ 
 
 
 const Items = ({currentItems}:ItemsProps)=> {
@@ -67,7 +67,7 @@ const Pagnation = () => {
   const currentItems = products.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(products.length / itemsPerPage);
 
-  const handlePageClick = (event: any) => {
+  const handlePageClick = (event:any) => {
     const newOffset = (event.selected * itemsPerPage) % products.length;
     const newStart = newOffset + 1;
     // console.log(

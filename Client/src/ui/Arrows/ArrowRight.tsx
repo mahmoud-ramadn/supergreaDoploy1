@@ -2,7 +2,7 @@ import { HiArrowRight } from "react-icons/hi";
 
 
 
-const ArrowRight = ({onClick }:any) => {
+const ArrowRight = ({ onClick }:any) => {
   return (
     <button
       onClick={onClick}
