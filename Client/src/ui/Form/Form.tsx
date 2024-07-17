@@ -12,8 +12,8 @@ import Loading from "../Loading";
 
 
 const Form = () => {
-  const [SingIn, setSingIn] = useState("SIGN IN");
-  const [SingUp, setSingUP] = useState("REGISTRATION FORM");
+  const SingIn="SIGN IN"
+  const SingUp="REGISTRATION FORM"
 
   const [value, SetValue] = useState("SIGN IN");
   const [loading, setLoading] = useState(false);
@@ -56,9 +56,9 @@ const Form = () => {
       
 
 
-    }catch (error:  unknown) {
+    }catch (error: any) {
   let errorMessage;
-  switch (error.code  as unknown | string) {
+  switch (error.code) {
     case "auth/invalid-email":
       errorMessage = "Please enter a valid email.";
       break;
