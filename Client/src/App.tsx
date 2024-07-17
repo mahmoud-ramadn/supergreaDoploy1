@@ -17,7 +17,6 @@ const App = () => {
     
     <HomeBannder />
     <Highlights/>
-    {/* ffasfdsk */}
     <Categories /> 
     
     <ProductsList/>
