@@ -20,7 +20,7 @@ const Profile = () => {
   return (
     <Container>
       {currentUser ? <UserInfo currentUser={currentUser} /> : <Registration />}
-
+{/* tsing  */}
       {isLoading && <Loading />}
     </Container>
   );
