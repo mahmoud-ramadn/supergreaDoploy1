@@ -1,41 +1,29 @@
-import { useEffect } from "react";
-import Container from "../ui/Container"
-import Form from "../ui/Form/Form"
 import { onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
 import { auth } from "../lib/firebase";
-import Loading from "../ui/Loading";
-import {store} from "../lib/store"
+import { store } from "../lib/store";
+import Container from "../ui/Container";
+import Registration from "../ui/Registration";
 import UserInfo from "../ui/UserInfo";
+import Loading from "../ui/Loading";
+
 const Profile = () => {
-
   const { currentUser, getUserInfo, isLoading } = store();
-
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
       getUserInfo(user?.uid);
-    })
-
+    });
     return () => {
       unSub();
-    }
-
-  },[getUserInfo])
-
-
-
+    };
+  }, [getUserInfo,currentUser]);
   return (
     <Container>
-      
-      {currentUser? <UserInfo currentUser={currentUser}/>:<Form/>
-      }
+      {currentUser ? <UserInfo currentUser={currentUser} /> : <Registration />}
 
+      {isLoading && <Loading />}
+    </Container>
+  );
+};
 
-
-{isLoading&& <Loading/>}
-     </Container>
-
-
-  )
-}
-
-export default Profile
+export default Profile;

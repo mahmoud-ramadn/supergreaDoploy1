@@ -4,6 +4,7 @@ import ReactPaginate from "react-paginate";
 
 import { ProductsProps } from "../types/type";
 import ProductCard from "./ProductCard";
+import { config } from "../../config";
 
 
 
@@ -41,7 +42,7 @@ const Pagnation = () => {
 
    useEffect(() => {
       const fetchData = async () => {
-        const endpoint = `http://localhost:8000/products`;
+        const endpoint = `${config.baseUrl}/products`;
         try {
           const data = await getData(endpoint);
 
