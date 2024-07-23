@@ -3,12 +3,9 @@ import Label from "./Label";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import Loading from "./Loading";
-import { useNavigate } from "react-router-dom";
 
 const Login = ({ setLogin }: { setLogin: any }) => {
-  const navigate = useNavigate(); // Corrected the function name
   const [loading, setLoading] = useState(false);
-  const [rednder, setred] = useState(false);
   const [errMsg, setErrMsg] = useState("");
 
   const handleLogin = async (e: any) => {
@@ -43,7 +40,6 @@ const Login = ({ setLogin }: { setLogin: any }) => {
       setErrMsg(errorMessage);
     } finally {
       setLoading(false);
-      setred(true)
     }
   };
 
