@@ -16,11 +16,10 @@ const Profile = () => {
     return () => {
       unSub();
     };
-  }, [getUserInfo]);
+  }, [getUserInfo,currentUser]);
   return (
     <Container>
       {currentUser ? <UserInfo currentUser={currentUser} /> : <Registration />}
-
       {isLoading && <Loading />}
     </Container>
   );

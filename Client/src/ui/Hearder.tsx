@@ -52,11 +52,18 @@ const Hearder = () => {
   }, []);
 
   useEffect(() => {
-    const filtered = products.filter((item: ProductsProps) =>
-      item.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
-    );
+    const time = setTimeout(() => {
+      const filtered = products.filter((item: ProductsProps) =>
+        item.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
+      );
+  
+      setFilteredProducts(filtered);
+    },1000)
+   
+    return () => {
+      clearTimeout(time)
+    }
 
-    setFilteredProducts(filtered);
   }, [searchText]);
 
   useEffect(() => {

@@ -37,7 +37,7 @@ const UserInfo = ({ currentUser }: UserTypes) => {
             </p>
           </div>
         </div>
-        <div className="mt-10 flex items-center gap-x-5 px-4">
+        <div className="mt-10 flex md:items-center gap-5 px-4 flex-wrap justify-center ">
           <button
             onClick={() =>
               toast.error("Edit profile option available to pro version!")

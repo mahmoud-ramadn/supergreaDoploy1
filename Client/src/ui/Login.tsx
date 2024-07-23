@@ -7,6 +7,7 @@ import Loading from "./Loading";
 const Login = ({ setLogin }: { setLogin: any }) => {
   const [loading, setLoading] = useState(false);
   const [errMsg, setErrMsg] = useState("");
+
   const handleLogin = async (e: any) => {
     e.preventDefault();
     try {
@@ -15,6 +16,7 @@ const Login = ({ setLogin }: { setLogin: any }) => {
       const { email, password }: any = Object.fromEntries(formData);
 
       await signInWithEmailAndPassword(auth, email, password);
+
     } catch (error: any) {
       let errorMessage;
       switch (error.code) {
@@ -40,6 +42,7 @@ const Login = ({ setLogin }: { setLogin: any }) => {
       setLoading(false);
     }
   };
+
   return (
     <div className="bg-gray-950 rounded-lg">
       <form
