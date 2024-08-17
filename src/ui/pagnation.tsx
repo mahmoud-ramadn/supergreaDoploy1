@@ -7,7 +7,7 @@ import ProductCard from "./ProductCard";
 import { config } from "../../config";
 
 
-
+// useing some uiheadless
 
 interface ItemsProps {
     currentItems:ProductsProps[];
@@ -64,16 +64,13 @@ const Pagnation = () => {
     const [itemStart, setItemStart] = useState(1);
     
   const endOffset = itemOffset + itemsPerPage;
-  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = products.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(products.length / itemsPerPage);
 
   const handlePageClick = (event:any) => {
     const newOffset = (event.selected * itemsPerPage) % products.length;
     const newStart = newOffset + 1;
-    // console.log(
-    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
-    // );
+   
     setItemOffset(newOffset);
     setItemStart(newStart);
   };

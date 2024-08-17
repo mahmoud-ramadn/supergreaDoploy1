@@ -5,14 +5,13 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-
 const firebaseConfig = {
-  apiKey: "AIzaSyDsH_xhrfoR-ANbEJ0D48CplMYXbrTAT_0",
-  authDomain: "supergear-cba7f.firebaseapp.com",
-  projectId: "supergear-cba7f",
-  storageBucket: "supergear-cba7f.appspot.com",
-  messagingSenderId: "613518317976",
-  appId: "1:613518317976:web:695106fcf518e49e93b3ed"
+  apiKey: "AIzaSyA3MshAhXoDDqRcQG-PrSJ7wQ6fzEalXmc",
+  authDomain: "test-94cba.firebaseapp.com",
+  projectId: "test-94cba",
+  storageBucket: "test-94cba.appspot.com",
+  messagingSenderId: "964299750036",
+  appId: "1:964299750036:web:4d950c0fa6debd7660d281",
 };
 
 // Initialize Firebase
